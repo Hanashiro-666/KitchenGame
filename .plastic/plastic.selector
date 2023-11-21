@@ -1,0 +1,4 @@
+repository "KitchenGame_Git@yascuo@cloud"
+  path "/"
+    br "/main"
+    co "/main"
