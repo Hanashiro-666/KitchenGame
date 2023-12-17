@@ -10,7 +10,7 @@ public class KitchenObjectSO : ScriptableObject
 
     public Sprite sprite;
 
-    [SerializeField] private string objectName;
+    public string objectName;
 
 
 
