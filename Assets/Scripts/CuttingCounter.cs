@@ -5,14 +5,16 @@ using UnityEngine;
 public class CuttingCounter : BaseCounter
 {
 
-    [SerializeField] private KitchenObjectSO cutKitchenObjectSO;
+    [SerializeField] private CuttingRecipeSO[] cuttingRecipeSOArray;
+
     public override void Interact(Player player)
     {
        if(!HasKitchenObject()){
             //There is no KitchrnObject here
             if(player.HasKitchenObject()){
                 //Player  is carrying something
-                player.GetKitchenObject().SetKitchenObjectParent(this);
+                    //Player carruing something thatcan be Cut
+                    player.GetKitchenObject().SetKitchenObjectParent(this);
             } else {
                 //Player not carrying anything 
             }
@@ -29,11 +31,23 @@ public class CuttingCounter : BaseCounter
 
     public override void InteractAlternate(Player player){
        if(HasKitchenObject()){
-        //There is a Kitchenbject here
+        //There is a Kitchenbject here and it can be cut
+        KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
+
         GetKitchenObject().DestroySelf();
 
-        KitchenObject.SpawnKitchenObject(cutKitchenObjectSO, this);
+        KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
 
        }
     }
+
+    private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO){
+        foreach (CuttingRecipeSO cuttingResipeSO in cuttingRecipeSOArray){
+            if(cuttingResipeSO.input == inputKitchenObjectSO){
+                return cuttingResipeSO.output;
+            }
+            
+        }
+        return null;
+    } 
 }
