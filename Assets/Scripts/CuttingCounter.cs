@@ -13,6 +13,8 @@ public class CuttingCounter : BaseCounter
 
     }
 
+    public event EventHandler Oncut;
+
 
 
     [SerializeField] private CuttingRecipeSO[] cuttingRecipeSOArray;
@@ -54,6 +56,8 @@ public class CuttingCounter : BaseCounter
        if(HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSO())){
             //There is a Kitchenbject here and it can be cut
             cuttingProgress++;
+
+            Oncut?.Invoke(this, EventArgs.Empty);
 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
