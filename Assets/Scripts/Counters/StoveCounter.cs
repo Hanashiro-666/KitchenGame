@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using static CuttingCounter;
 
 public class StoveCounter : BaseCounter
 {
+    public event EventHandler <OnStateChangedEventArgs> OnStateChanged;
 
-    private enum State{
+    public class OnStateChangedEventArgs : EventArgs {
+        public State state;
+    }
+
+    public enum State{
         Idle,
         Frying,
         Fried,
         Burned,
     }
+
     [SerializeField] private FryingResipeSO[] fryingResipeArray;
 
     [SerializeField] private BurningResipeSO[] burningResipeArray;
@@ -43,11 +51,13 @@ public class StoveCounter : BaseCounter
 
                 KitchenObject.SpawnKitchenObject(fryingResipeSO.output, this);
 
-                Debug.Log("Object Fried!");
-
                 state = State.Fried;
                 burningTimer = 0f;
                 burningRecipeSO = GetBurningRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs{
+                    state = state
+                    });
             }
             break;
 
@@ -64,13 +74,17 @@ public class StoveCounter : BaseCounter
                 Debug.Log("Object Burnned!");
 
                 state = State.Burned;
+
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs{
+                    state = state
+                    });
+
             }
             break;
 
             case State.Burned:
             break;
           }
-          Debug.Log(state);
 
         }
     }
@@ -88,6 +102,10 @@ public class StoveCounter : BaseCounter
 
                     state = State.Frying;
                     fryingTimer = 0f;
+
+                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs{
+                    state = state
+                    });        
                 }
             } else {
                 //Player not carrying anything 
@@ -101,6 +119,12 @@ public class StoveCounter : BaseCounter
                 GetKitchenObject().SetKitchenObjectParent(player);
 
                 state = State.Idle;
+
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs{
+                    state = state
+                    });
+
+               
             }
         }
     }
