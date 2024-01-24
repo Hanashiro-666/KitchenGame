@@ -260,6 +260,8 @@ MonoBehaviour:
   counterTopPoint: {fileID: 9192149650686922882}
   fryingResipeArray:
   - {fileID: 11400000, guid: 955beea36490c4143a123135380219a2, type: 2}
+  burningResipeArray:
+  - {fileID: 11400000, guid: c67bf7785e0daf74fafd6906569b3c1b, type: 2}
 --- !u!4 &5510755362038447420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9131677845735489385, guid: d903ed7c685ec43479668f1271015047,
