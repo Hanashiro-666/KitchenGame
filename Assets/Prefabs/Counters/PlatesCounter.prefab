@@ -98,6 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44762bff6519fc14a8c7a2d9c2ef9db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterTopPoint: {fileID: 6751989763099127898}
+  plateKitchenObjectSO: {fileID: 11400000, guid: 7e584cfca17351146b0e9fa9daff2c5c,
+    type: 2}
+--- !u!4 &6751989763099127898 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571248732018807511, guid: d903ed7c685ec43479668f1271015047,
+    type: 3}
+  m_PrefabInstance: {fileID: 1216798587309744781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7951337414785850852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9131677845735489385, guid: d903ed7c685ec43479668f1271015047,
@@ -170,7 +179,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: e21b499d164095947b7559f0267f0e63,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8134459191773355798}
   m_SourcePrefab: {fileID: 100100000, guid: e21b499d164095947b7559f0267f0e63, type: 3}
 --- !u!4 &182881008134712414 stripped
 Transform:
@@ -178,6 +191,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4411357512459454709}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &182881008134712415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: e21b499d164095947b7559f0267f0e63,
+    type: 3}
+  m_PrefabInstance: {fileID: 4411357512459454709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8134459191773355798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182881008134712415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c966c118b687b4d9bef362b65c535a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platesCounter: {fileID: 681406517736558025}
+  counterTopPoint: {fileID: 6751989763099127898}
+  plateVisualPrefab: {fileID: 3812876574508226176, guid: c0c9afd619b40914a8f625c0535e2284,
+    type: 3}
 --- !u!1001 &6219294995432821311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +231,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
+    - target: {fileID: 4472461010448373620, guid: e21b499d164095947b7559f0267f0e63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4589716710238282922, guid: e21b499d164095947b7559f0267f0e63,
         type: 3}
       propertyPath: m_Name
@@ -310,6 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e2e85245694b1449b8ec69e3ef9c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCounter: {fileID: 0}
+  baseCounter: {fileID: 681406517736558025}
   visualGameObjectArray:
   - {fileID: 7520448767521981771}
